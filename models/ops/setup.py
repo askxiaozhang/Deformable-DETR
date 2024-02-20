@@ -42,6 +42,11 @@ def get_extensions():
             "-D__CUDA_NO_HALF_OPERATORS__",
             "-D__CUDA_NO_HALF_CONVERSIONS__",
             "-D__CUDA_NO_HALF2_OPERATORS__",
+            "-arch=sm_60",
+        ]
+        extra_compile_args["nvcc"] += [
+            "-gencode=arch=compute_75,code=sm_75",
+            "-gencode=arch=compute_80,code=sm_80",
         ]
     else:
         raise NotImplementedError('Cuda is not availabel')
